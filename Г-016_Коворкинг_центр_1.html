@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+<div id="pannelleum"></div>
+<button class="back-button" onclick="goBack()">Назад</button>
+
+<script>
+pannellum.viewer('pannelleum', {
+    "type": "equirectangular",
+    "panorama": "Г-016_Коворкинг_центр_1.jpg",
+    "autoLoad": true,
+    "hotSpots": [
+        {
+            "pitch": -24,
+            "yaw": 0,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Hotspot 1",
+                "URL": "./%D0%A2%D0%BE%D1%87%D0%BA%D0%B0%20%D0%BA%D0%B8%D0%BF%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%D1%85%D0%BE%D0%B4.html"
+            }
+        }
+    ]
+});
+
+function hotspot(hotSpotDiv, args) {
+    hotSpotDiv.classList.add('custom-hotspot');
+    hotSpotDiv.addEventListener('click', function() {
+        window.location.href = args.URL;
+    });
+}
+
+function goBack() {
+    window.history.back();
+}
+</script>
+
+</body>
+</html>
