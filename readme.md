@@ -1,3 +1,16 @@
+# Название проекта
+
+IRNITU_360
+
+## Авторство
+
+Copyright (c) 2025 Субарман Илья Владимирович. Все права защищены.
+
+## Используемые библиотеки
+
+Этот проект использует библиотеку Pannellum, лицензированную под MIT. 
+
+### Лицензия Pannellum
 # Pannellum 2.5.6
 
 ## About
@@ -42,3 +55,4 @@ The panoramic image provided with the examples is licensed under the [Creative C
 If used as part of academic research, please cite:
 
 > Petroff, Matthew A. "Pannellum: a lightweight web-based panorama viewer." _Journal of Open Source Software_ 4, no. 40 (2019): 1628. [doi:10.21105/joss.01628](https://doi.org/10.21105/joss.01628)
+"# IRNITU_360" 
