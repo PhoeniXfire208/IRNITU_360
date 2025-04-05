@@ -1,25 +1,50 @@
-/* Copyright (c) 2025 Субарман Илья Владимирович. Все права защищены. */
 #pannelleum {
-    width: 900px;
+    width: 100%;
     height: 700px;
     position: relative;
 }
+
 .back-button {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    padding: 10px;
+    bottom: 5%;
+    left: 0.7%;
+    padding: 0.65%;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 18%;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1;
 }
+
 .custom-hotspot {
     width: 120px;
     height: 70px;
     background-image: url('hotspot6.png');
     background-size: cover;
     cursor: pointer;
+}
+
+.sound-button {
+    position: absolute;
+    top: 1.8%;
+    right: 0.7%;
+    padding: 2.5%;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.sound-button_on
+{
+    background-image: url('./img_tools/Play.png');
+}
+.sound-button_off
+{
+
+    background-image: url('./img_tools/Stop.png');
 }
