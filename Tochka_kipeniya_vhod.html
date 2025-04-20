@@ -17,17 +17,37 @@
 <script>
 pannellum.viewer('pannelleum', {
     "type": "equirectangular",
-    "panorama": "К-Конф-зал_центр_1.jpg",
+    "panorama": "Tochka_kipeniya_vhod.jpg",
     "autoLoad": true,
     "hotSpots": [
         {
-            "pitch": -25,
-            "yaw": 60,
+            "pitch": -24,
+            "yaw": -90,
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
                 "text": "Hotspot 1",
-                "URL": "./%D0%A5%D0%BE%D0%BB%D0%BB.html"
+                "URL": "./V1.html"
+            }
+        },
+        {
+            "pitch": -24,
+            "yaw": 180,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Hotspot 2",
+                "URL": "./Tochka_kipeniya_vnutri.html"
+            }
+        },
+        {
+            "pitch": -32,
+            "yaw": -50,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Hotspot 3",
+                "URL": "./G-016_Kovorking_tsentr_1.html"
             }
         }
     ]

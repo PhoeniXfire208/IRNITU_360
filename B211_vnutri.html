@@ -7,7 +7,7 @@
     <title>A simple example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
 
@@ -17,37 +17,17 @@
 <script>
 pannellum.viewer('pannelleum', {
     "type": "equirectangular",
-    "panorama": "А_акт зал_холл_1.jpg",
+    "panorama": "B211_vnutri.jpg",
     "autoLoad": true,
     "hotSpots": [
         {
-            "pitch": -24,
-            "yaw": 4,
+            "pitch": -20,
+            "yaw": 23,
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
                 "text": "Hotspot 1",
-                "URL": "./%D0%A5%D0%BE%D0%BB%D0%BB.html"
-            }
-        },
-        {
-            "pitch": -14,
-            "yaw": 92,
-            "type": "custom",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": {
-                "text": "Hotspot 2",
-                "URL": "./%D0%90_%D0%B0%D0%BA%D1%82%20%D0%B7%D0%B0%D0%BB_%D0%B1%D0%BE%D1%80%D0%B4%D0%BE%D0%B2_1.html"
-            }
-        },
-        {
-            "pitch": -14,
-            "yaw": -86,
-            "type": "custom",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": {
-                "text": "Hotspot 3",
-                "URL": "./%D0%90_%D0%B0%D0%BA%D1%82%20%D0%B7%D0%B0%D0%BB_%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9_1.html"
+                "URL": "./B211_vhod.html" 
             }
         }
     ]

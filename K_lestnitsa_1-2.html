@@ -17,17 +17,27 @@
 <script>
 pannellum.viewer('pannelleum', {
     "type": "equirectangular",
-    "panorama": "А_столовая_1.jpg",
+    "panorama": "K_lestnitsa_1-2.jpg",
     "autoLoad": true,
     "hotSpots": [
         {
-            "pitch": -15,
-            "yaw": -22,
+            "pitch": -14,
+            "yaw": 4,
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
                 "text": "Hotspot 1",
-                "URL": "./%D0%90_%D0%BE%D0%BA%D0%BE%D0%BB%D0%BE%20%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8_1.html"
+                "URL": "./K1.html"
+            }
+        },
+        {
+            "pitch": -30,
+            "yaw": 180,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Hotspot 2",
+                "URL": "./V1.html"
             }
         }
     ]

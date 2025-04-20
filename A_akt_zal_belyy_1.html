@@ -7,7 +7,7 @@
     <title>A simple example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
@@ -17,17 +17,27 @@
 <script>
 pannellum.viewer('pannelleum', {
     "type": "equirectangular",
-    "panorama": "Б118а внутри.jpg",
+    "panorama": "A_akt_zal_belyy_1.jpg",
     "autoLoad": true,
     "hotSpots": [
         {
-            "pitch": -10,
-            "yaw": 95,
+            "pitch": -20,
+            "yaw": -160,
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
                 "text": "Hotspot 1",
-                "URL": "./%D0%91118%D0%90%20%D0%B2%D1%85%D0%BE%D0%B4.html"
+                "URL": "./A_akt_zal_holl_1.html"
+            }
+        },
+        {
+            "pitch": -14,
+            "yaw": -4,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Hotspot 2",
+                "URL": "./A_akt_zal_parket_1.html"
             }
         }
     ]
