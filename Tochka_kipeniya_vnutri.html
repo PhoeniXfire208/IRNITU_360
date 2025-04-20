@@ -13,6 +13,8 @@
 
 <div id="pannelleum"></div>
 <button class="back-button" onclick="goBack()">Назад</button>
+<button id="sound_button" class="sound-button sound-button_on" onclick="sound_on_off()"></button>
+<audio controls id="audio" src="./audio/Tochka_kipenia.mp3"></audio>
 
 <script>
 pannellum.viewer('pannelleum', {
@@ -43,6 +45,26 @@ function hotspot(hotSpotDiv, args) {
 function goBack() {
     window.history.back();
 }
+
+var sound = false;
+// Управление звуком
+function sound_on_off() {
+    if (sound) {
+        document.getElementById('sound_button').className="sound-button sound-button_on";
+        audio.pause();
+    }
+    else {
+        document.getElementById('sound_button').className="sound-button sound-button_off";
+        audio.play().catch(e => console.error("Ошибка воспроизведения:", e));
+    }
+    sound = !sound;
+}
+
+// Остановка звука после окончания трека
+audio.addEventListener('ended', function() {
+    sound=false;
+    document.getElementById('sound_button').className="sound-button sound-button_on";
+});
 
 // Создаем глобальную переменную для хранения div'а tooltip
 let tooltipDiv = null;
