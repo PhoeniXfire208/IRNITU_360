@@ -1,10 +1,9 @@
-<!-- Copyright (c) 2025 Субарман Илья Владимирович. Все права защищены. -->
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A simple example</title>
+    <title>Pannellum Example with Tooltip Hotspots</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <link rel="stylesheet" href="style.css"/>
@@ -17,6 +16,8 @@
 <audio controls id="audio" src="./12.mp3"></audio>
 
 <script>
+
+// Основной скрипт инициализации панорамы
 pannellum.viewer('pannelleum', {
     "type": "equirectangular",
     "panorama": "Holl.jpg",
@@ -28,18 +29,8 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 1",
+                "text": "Холл лестница слева",
                 "URL": "./Holl_lestnitsa_sleva.html"
-            }
-        },
-        {
-            "pitch": -14,
-            "yaw": 96,
-            "type": "custom",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": {
-                "text": "Hotspot 2",
-                "URL": "./A_akt_zal_holl_1.html"
             }
         },
         {
@@ -48,8 +39,18 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 3",
+                "text": "Конференц-зал",
                 "URL": "./K-Konf-zal_tsentr_1.html"
+            }
+        },
+        {
+            "pitch": -14,
+            "yaw": 96,
+            "type": "custom",
+            "createTooltipFunc": hotspot,
+            "createTooltipArgs": {
+                "text": "Холл актового зала",
+                "URL": "./A_akt_zal_holl_1.html"
             }
         },
         {
@@ -58,7 +59,7 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 4",
+                "text": "Спортзал",
                 "URL": "./Sport_zal_tsentr_1.html"
             }
         },
@@ -68,7 +69,7 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 5",
+                "text": "Лестница вниз",
                 "URL": "./A_okolo_Biblioteki_1.html"
             }
         },
@@ -78,7 +79,7 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 6",
+                "text": "Е325",
                 "URL": "./E_325_vnutri_1.html"
             }
         },
@@ -88,7 +89,7 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 7",
+                "text": "Е115",
                 "URL": "./E115_1.html"
             }
         },
@@ -98,25 +99,20 @@ pannellum.viewer('pannelleum', {
             "type": "custom",
             "createTooltipFunc": hotspot,
             "createTooltipArgs": {
-                "text": "Hotspot 8",
+                "text": "И119",
                 "URL": "./I119_1.html"
             }
         }
     ]
 });
 
-function hotspot(hotSpotDiv, args) {
-    hotSpotDiv.classList.add('custom-hotspot');
-    hotSpotDiv.addEventListener('click', function() {
-        window.location.href = args.URL;
-    });
-}
-
+// Функция возврата назад
 function goBack() {
     window.history.back();
 }
 
 var sound = false;
+// Управление звуком
 function sound_on_off() {
     if (sound) {
         document.getElementById('sound_button').className="sound-button sound-button_on";
@@ -128,10 +124,60 @@ function sound_on_off() {
     }
     sound = !sound;
 }
+
+// Остановка звука после окончания трека
 audio.addEventListener('ended', function() {
     sound=false;
     document.getElementById('sound_button').className="sound-button sound-button_on";
+});
+
+// Создаем глобальную переменную для хранения div'а tooltip
+let tooltipDiv = null;
+
+// Обработчик клика на горячую точку
+function hotspot(hotSpotDiv, args) {
+    // Добавляем класс custom-hotspot
+    hotSpotDiv.classList.add('custom-hotspot');
+
+    // Показываем название при наведении мыши
+    hotSpotDiv.addEventListener('mouseenter', () => showTooltip(args.text));
+
+    // Скрываем название при уходе мыши
+    hotSpotDiv.addEventListener('mouseleave', hideTooltip);
+
+    // Переход по ссылке при клике
+    hotSpotDiv.addEventListener('click', function() {
+        window.location.href = args.URL;
     });
+}
+
+// Отображаем всплывающую подсказку
+function showTooltip(text) {
+    if (!tooltipDiv) {
+        tooltipDiv = document.createElement('div');
+        tooltipDiv.style.position = 'absolute';
+        tooltipDiv.style.backgroundColor = '#fff';
+        tooltipDiv.style.padding = '5px';
+        tooltipDiv.style.borderRadius = '5px';
+        tooltipDiv.style.boxShadow = '0 2px 4px rgba(0,0,0,.3)';
+        tooltipDiv.style.zIndex = '1000'; // поверх остальных элементов
+        tooltipDiv.style.opacity = '0.9';
+        tooltipDiv.style.pointerEvents = 'none'; // чтобы не мешал взаимодействию с элементами
+        document.body.appendChild(tooltipDiv);
+    }
+    tooltipDiv.innerText = text;
+    const rect = event.target.getBoundingClientRect(); // Получаем координаты элемента
+    tooltipDiv.style.left = `${rect.left + 50 + rect.width / 2 - tooltipDiv.offsetWidth / 2}px`;
+    tooltipDiv.style.top = `${rect.top - tooltipDiv.offsetHeight - 30}px`;
+    tooltipDiv.style.display = 'block';
+}
+
+// Скрываем всплывающую подсказку
+function hideTooltip() {
+    if (tooltipDiv) {
+        tooltipDiv.style.display = 'none';
+    }
+}
 </script>
 
 </body>

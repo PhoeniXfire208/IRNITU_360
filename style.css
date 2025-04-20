@@ -37,14 +37,12 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
-.sound-button_on
-{
+
+.sound-button_on {
     background-image: url('./img_tools/Play.png');
 }
-.sound-button_off
-{
 
+.sound-button_off {
     background-image: url('./img_tools/Stop.png');
 }
