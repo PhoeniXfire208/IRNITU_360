@@ -26,42 +26,35 @@ audio.addEventListener('ended', function() {
 // Создаем глобальную переменную для хранения div'а tooltip
 let tooltipDiv = null;
 
-// Обработчик клика на горячую точку
+// Обработчик клика на горячую точку (измененная строка)
 function hotspot(hotSpotDiv, args) {
-    // Добавляем класс custom-hotspot
     hotSpotDiv.classList.add('custom-hotspot');
-
-    // Показываем название при наведении мыши
-    hotSpotDiv.addEventListener('mouseenter', () => showTooltip(args.text));
-
-    // Скрываем название при уходе мыши
+    hotSpotDiv.addEventListener('mouseenter', (e) => showTooltip(e, args.text)); // Добавлен параметр события
     hotSpotDiv.addEventListener('mouseleave', hideTooltip);
-
-    // Переход по ссылке при клике
     hotSpotDiv.addEventListener('click', function() {
         window.location.href = args.URL;
     });
 }
 
-// Отображаем всплывающую подсказку
-function showTooltip(text) {
+// Новая версия функции showTooltip
+function showTooltip(event, text) {
     if (!tooltipDiv) {
         tooltipDiv = document.createElement('div');
-        tooltipDiv.style.position = 'absolute';
-        tooltipDiv.style.backgroundColor = '#fff';
-        tooltipDiv.style.padding = '5px';
-        tooltipDiv.style.borderRadius = '5px';
-        tooltipDiv.style.boxShadow = '0 2px 4px rgba(0,0,0,.3)';
-        tooltipDiv.style.zIndex = '1000'; // поверх остальных элементов
-        tooltipDiv.style.opacity = '0.9';
-        tooltipDiv.style.pointerEvents = 'none'; // чтобы не мешал взаимодействию с элементами
+        tooltipDiv.className = 'custom-tooltip';
         document.body.appendChild(tooltipDiv);
+        console.log('Tooltip element created'); // Для отладки
     }
-    tooltipDiv.innerText = text;
-    const rect = event.target.getBoundingClientRect(); // Получаем координаты элемента
-    tooltipDiv.style.left = `${rect.left + 50 + rect.width / 2 - tooltipDiv.offsetWidth / 2}px`;
-    tooltipDiv.style.top = `${rect.top - tooltipDiv.offsetHeight - 30}px`;
+    tooltipDiv.textContent = text;
+    console.log('Tooltip text:', text); // Для отладки
+    
+    // Добавьте проверку координат
+    const x = event.clientX + window.scrollX + 15;
+    const y = event.clientY + window.scrollY + 15;
+    
+    tooltipDiv.style.left = `${x}px`;
+    tooltipDiv.style.top = `${y}px`;
     tooltipDiv.style.display = 'block';
+    console.log('Tooltip position:', x, y); // Для отладки
 }
 
 // Скрываем всплывающую подсказку
